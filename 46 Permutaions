@@ -1,0 +1,28 @@
+class Solution {
+public:
+
+    vector<vector<int>> result;
+    int n;
+
+    void solve(int index, vector<int>& nums ) {
+
+        if(index == n) {
+            result.push_back(nums);
+            return;
+        }
+
+    for( int i = index; i<n; i++) {
+        swap(nums[i], nums[index]);
+        solve(index+1,nums);
+         swap(nums[i], nums[index]);
+    }
+
+    }
+
+    vector<vector<int>> permute(vector<int>& nums) {
+        
+        n = nums.size();
+        solve(0,nums);
+        return result;
+    }
+};
